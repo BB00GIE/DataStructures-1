@@ -34,7 +34,11 @@ public class StackNotes {
         String[] src = {"bird", "cat", "dog", "fish"};
         reverseOrder(src);
         System.out.println(stack);
-        System.out.println(reverseOrder(stack));
+        System.out.println(reverseOrder2(src));
+        System.out.println(Match("()"));
+        System.out.println(Match("{((()))}"));
+        System.out.println(Match("}((()))("));
+        System.out.println(Match("[][[]][][]"));
     }
     static public String[] reverseOrder(String[] source) {
         String[] out = new String[source.length];
@@ -44,11 +48,47 @@ public class StackNotes {
         }
         return out;
     }
-    static public Stack<String> reverseOrder(Stack<String> source) {
+    static public Stack<String> reverseOrder1(Stack<String> source) {
         Stack<String> out = new Stack();
         while(source.empty() == false) {
             out.push(source.pop());
         }
         return out;
+    }
+
+    public static String[] reverseOrder2(String[] source) {
+        Stack<String> buffer = new Stack();
+        String[] out = new String[source.length];
+        for(int i = 0 ; i < source.length; i++) {
+            buffer.push(source[i]);
+        }
+        int j = 0;
+        while (!buffer.empty()) {
+          out[j++] = buffer.pop();
+        }
+        return out;
+    }
+
+    public static boolean Match(String exp) {
+        Stack<Character> Delimiter = new Stack();
+        final String open = "([{";
+        final String close = ")]}";
+        for(char ch : exp.toCharArray()) {
+            if (open.indexOf(ch) != -1) {
+                Delimiter.push(ch);
+            }
+            else if(close.indexOf(ch) != -1) {
+
+                if (Delimiter.isEmpty()) {
+                    return false;
+                }
+                Delimiter.pop();
+            }
+
+            if (close.indexOf(ch) != open.indexOf(Delimiter.pop())) {
+                    return false;
+                }
+        }
+        return Delimiter.isEmpty();
     }
 }
