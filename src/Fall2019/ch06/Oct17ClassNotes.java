@@ -6,7 +6,7 @@ public class Oct17ClassNotes {
     public static void main(String[] args) {
         //test_split_string();
         //test_parsing();
-        double a = eval("3.1 2.2 +");
+        double a = eval("3.0 2.0 +");
         System.out.printf("___%4.2f___" , a);
     }
 
@@ -36,6 +36,42 @@ public class Oct17ClassNotes {
         String[] token = postfix.trim().split("\\s+");
         for (int i = 0 ;i < token.length; i++) {
             String tok = token[i];
+            if (tok.equals("*")) {
+                if(calc.empty()) {
+                    return Double.NaN;
+                }
+                double a = calc.pop();
+                if (calc.empty()) {
+                    return Double.NaN;
+                }
+                double b = calc.pop();
+                double c = a * b;
+                calc.push(c);
+            }
+            if (tok.equals("/")) {
+                if(calc.empty()) {
+                    return Double.NaN;
+                }
+                double a = calc.pop();
+                if (calc.empty()) {
+                    return Double.NaN;
+                }
+                double b = calc.pop();
+                double c = a / b;
+                calc.push(c);
+            }
+            if (tok.equals("-")) {
+                if(calc.empty()) {
+                    return Double.NaN;
+                }
+                double a = calc.pop();
+                if (calc.empty()) {
+                    return Double.NaN;
+                }
+                double b = calc.pop();
+                double c = a - b;
+                calc.push(c);
+            }
             if (tok.equals("+")) {
                 if(calc.empty()) {
                     return Double.NaN;
