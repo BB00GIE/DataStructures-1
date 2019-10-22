@@ -1,5 +1,6 @@
 package Fall2019.ch06;
 import java.util.Stack;
+import java.math.*;
 public class Oct22ndClassNotes {
 
     static public void main(String[] arg) {
@@ -24,6 +25,9 @@ public class Oct22ndClassNotes {
         test(" 20 2 - 5.0 3.000 - / ");   //  9
         test(" 10 6 6 - /  ");            //  illegal
         test("1 2 + 3 4 + * 1 6 + /");    //  3
+        test("2 7 + sqrt 10 +");         //13
+        test("3 2 ^"); //9
+        test("1 10 - sqrt");
         //
         // TO DO:  Add more legal and illegal examples:
     }
@@ -35,7 +39,30 @@ public class Oct22ndClassNotes {
         String[] token = postfix.trim().split("\\s+");
         for (int i = 0; i < token.length; i++) {
             String tok = token[i];
-            if(tok.equals("-")) {
+            if(tok.equals("^")) {
+                if(stack.empty()) {
+                    return Double.NaN;
+                }
+                double a = stack.pop();
+                if(stack.empty()) {
+                    return Double.NaN;
+                }
+                double b = stack.pop();
+                double c = Math.pow(b,a);
+                stack.push(c);
+            }
+            else if(tok.equals("sqrt")) {
+                if(stack.empty()) {
+                    return Double.NaN;
+                }
+                double a = stack.pop();
+                if (a<0) {
+                    return Double.NaN;
+                }
+                double b = Math.sqrt(a);
+                stack.push(b);
+            }
+           else if(tok.equals("-")) {
                 if(stack.empty()) {
                     return Double.NaN;
                 }
