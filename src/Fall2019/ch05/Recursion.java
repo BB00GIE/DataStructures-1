@@ -4,7 +4,7 @@ Recursion is using a function within itself until it reaches one of the base cas
  */
 public class Recursion {
     public static void main(String[] args) {
-        System.out.print(multiPos(5,6));
+        System.out.print(divider(12,3));
         //for (int n = 0; n <= 12; n ++) {
             //System.out.printf("FactorialD(%d) = %d \n" , n , FactorialD(n));
             //System.out.printf("FactorialR(%d) = %d \n" , n , FactorialR(n));
@@ -68,5 +68,12 @@ public class Recursion {
             return 1;
         }
         return a * Pow(a, pow-1);
+    }
+
+    public static int divider (int a, int b) {
+        if (a < b){
+            return 0;
+        }
+        return 1 + divider(a-b,b);
     }
 }
