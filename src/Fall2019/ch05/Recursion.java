@@ -4,7 +4,10 @@ Recursion is using a function within itself until it reaches one of the base cas
  */
 public class Recursion {
     public static void main(String[] args) {
-        System.out.print(divider(12,3));
+        for (int num = 1; num<=10; num++){
+            System.out.println(FibR(num));
+        }
+        //System.out.print(divider(12,3));
         //for (int n = 0; n <= 12; n ++) {
             //System.out.printf("FactorialD(%d) = %d \n" , n , FactorialD(n));
             //System.out.printf("FactorialR(%d) = %d \n" , n , FactorialR(n));
@@ -76,4 +79,30 @@ public class Recursion {
         }
         return 1 + divider(a-b,b);
     }
+
+    public static void Fib(int num) {
+        int a = 1;
+        int b = 1;
+        System.out.println(a);
+        System.out.println(b);
+        for (int i = 0; i < num; i++) {
+            b = a + b;
+            a = b - a;
+            System.out.println(b);
+        }
+    }
+
+    public static int FibR(int num) {
+
+    if (num == 1 || num == 2) {
+        return 1;
+    }
+    return FibR(num - 2) + FibR(num-1);
+    }
+
+    public static int permutations(String s){
+        return FactorialR(s.length());
+    }
+
 }
+

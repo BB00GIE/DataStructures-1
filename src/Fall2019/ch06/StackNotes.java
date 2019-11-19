@@ -1,11 +1,18 @@
 package Fall2019.ch06;
 
+import java.util.List;
 import java.util.Stack;
 
 public class StackNotes {
     public static void main(String[] args) {
         Stack<String> stack = new Stack();
-        System.out.println("1  " + stack.empty());
+        Stack<String> stk = new Stack();
+        stk.push("Target");
+        stk.push("Item");
+        stk.push("Item");
+        stk.push("Item");
+        stk.push("Item");
+        /*System.out.println("1  " + stack.empty());
         stack.push("Apple");
         System.out.println("2  " + stack.empty());
         stack.push("Orange");
@@ -19,14 +26,14 @@ public class StackNotes {
         //String z = stack.pop();
         //System.out.println("7  " + z);
 
-        /*try {
+       try {
             String q = stack.pop();
             System.out.println("8  " + q);
         } catch(Exception e){
             System.out.println("Stack is empty cannot pop");
         }
 
-         */
+
         stack.push("Cocconut");
         System.out.println("9  " + stack.empty());
         stack.push("Cherry");
@@ -39,6 +46,27 @@ public class StackNotes {
         System.out.println(Match("{((()))}"));
         System.out.println(Match("}((()))("));
         System.out.println(Match("[][[]][][]"));
+
+         */
+
+
+        System.out.println(FindStringR("Target",stk));
+        stk.push("Target");
+        stk.push("Item");
+        stk.push("Item");
+        stk.push("Item");
+        stk.push("Item");
+        System.out.println(FindStringR("Target",stk));
+        stk.push("Target");
+        stk.push("Item");
+        stk.push("Item");
+        stk.push("Item");
+        stk.push("Item");
+        /*System.out.println(numCHarsR(stk));
+        stk.push("Target");
+        System.out.println(numCHarsR(stk));
+
+         */
     }
     static public String[] reverseOrder(String[] source) {
         String[] out = new String[source.length];
@@ -91,4 +119,72 @@ public class StackNotes {
         }
         return Delimiter.isEmpty();
     }
+
+    public static int numChars (Stack<String> stack) {
+        int totalChars = 0;
+        while (!stack.isEmpty()) {
+            totalChars += stack.pop().length();
+        }
+        return totalChars;
+    }
+
+    //class MyBook {}
+/*
+    public static boolean isString (MyBook target, Stack s){
+        while(!s.isEmpty()){
+            if (target.equals(s.pop())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+ */
+
+    public static boolean isString(String target, Stack s){
+        while(!s.isEmpty()){
+            if (target.equals(s.pop())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static boolean FindStringR(String target, Stack s){
+        if (s.isEmpty()){
+            return false;
+        }
+        if (target.equals(s.pop())){
+            return true;
+        }
+        return FindStringR(target,s);
+
+    }
+
+
+    public static int numCHarsR(Stack<String> s){
+        if (s.isEmpty()){
+            return 0;
+        }
+        String a = s.pop();
+        return a.length() + numCHarsR(s);
+    }
+
+    static public boolean find_R(List<String> s, String Target){
+        if (s.isEmpty()){
+            return false;
+        }
+        String a = s.get(0);
+        s.remove(0);
+        if (Target.equals(a)){
+            return true;
+        }
+        return find_R(s,Target);
+    }
+
+    public static void Permutations(String s) {
+        return;
+    }
+
 }

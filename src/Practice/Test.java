@@ -1,8 +1,12 @@
 package Practice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Test {
     public static void main(String[] args){
         System.out.print(reverse("cherry"));
+        List<String> lstStr = new ArrayList<String>();
     }
 
     public static String reverse(String message){
@@ -13,4 +17,6 @@ public class Test {
         }
         return message.charAt(a) + reverse(message.substring(b,a));
     }
+
+
 }
