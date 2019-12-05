@@ -1,4 +1,4 @@
-package Fall2019.ch06;
+package fall2019.ch06;
 
 import java.util.List;
 import java.util.Stack;
