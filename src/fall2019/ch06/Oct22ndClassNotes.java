@@ -1,6 +1,6 @@
-package Fall2019.ch06;
+package fall2019.ch06;
 import java.util.Stack;
-import java.math.*;
+
 public class Oct22ndClassNotes {
 
     static public void main(String[] arg) {

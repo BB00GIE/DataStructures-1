@@ -1,4 +1,4 @@
-package Fall2019.Ch03;
+package fall2019.Ch03;
 
 import java.util.ArrayList;
 import java.util.List;

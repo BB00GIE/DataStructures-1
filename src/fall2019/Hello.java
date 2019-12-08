@@ -1,4 +1,4 @@
-package Fall2019;
+package fall2019;
 
 public class Hello {
 }
